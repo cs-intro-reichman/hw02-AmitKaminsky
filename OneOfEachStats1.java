@@ -9,32 +9,31 @@ public class OneOfEachStats1 {
 		// User inputs T - number of families to form (amount of runs)
 		int T = Integer.parseInt(args[0]);
 		int countChildrenPerRun = 1;
-		double totalCount = 0; // How many children in all runs to calculate average
 		boolean isOneOfEach = false; // Tool to break while
-		char firstChild = (Math.random() > 0.5) ? 'b' : 'g';
+		char firstChild = ' ';
 		char child = firstChild;
-		char prevChild = child; // Used to check is isOneOfEach
+		int totalCount = 0;
 		int twoChilds = 0, threeChilds = 0, fourOrMoreChilds = 0; // Counts the families
 		for (int t = 0; t < T; t++) {
 			// The "while" counts how many children until at least
 			// one of each gender.
+			firstChild = Math.random() > 0.5 ? 'b' : 'g';
 			while (!isOneOfEach) {
 				child = Math.random() > 0.5 ? 'b' : 'g';
-				if (child != prevChild) {
+				if (child != firstChild) {
 					isOneOfEach = true;
 				}
 				countChildrenPerRun += 1;
-				totalCount += countChildrenPerRun;
 			}
 			// We need to reset the counts and bool before the run and count families
 			isOneOfEach = false;
 			if (countChildrenPerRun == 2) twoChilds++;
 			else if (countChildrenPerRun == 3) threeChilds++;
 			else if (countChildrenPerRun > 3) fourOrMoreChilds++;
+			totalCount += countChildrenPerRun;
 			countChildrenPerRun = 1;
 		}
-		double average =
-			 (double) (fourOrMoreChilds * 4 + threeChilds * 3 + twoChilds * 2) / T;
+		double average = (double) (totalCount) / T;
 		String mostCommon = "";
 		if (twoChilds >= threeChilds && twoChilds >= fourOrMoreChilds) {
 			mostCommon = "2";
