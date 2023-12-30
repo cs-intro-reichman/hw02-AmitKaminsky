@@ -25,7 +25,5 @@ public class Perfect {
 		} else {
 			System.out.println(userInput + " is not a perfect number");
 		}
-		// int sum += i if divisor, in for stop i++ before reaching the number
-		// check if sum == number
 	}
 }
