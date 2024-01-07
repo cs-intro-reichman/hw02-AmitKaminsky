@@ -6,6 +6,7 @@ public class InOrder {
 	public static void main (String[] args) {
 		int num = -1;
 		int random = (int) (Math.random() * 10);
+		// #feedback: great use of do-while loop!
 		do {
 			System.out.print(random + " ");
 			num = random;
