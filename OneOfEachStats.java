@@ -10,10 +10,11 @@ import java.util.Random;
 public class OneOfEachStats {
 	public static void main (String[] args) {
 		// Gets the two command-line arguments
+		// #feedback: better to not use capital letters to start variable names, especially not when their name is only one letter...
 		int T = Integer.parseInt(args[0]);
 		int seed = Integer.parseInt(args[1]);
 		// Initailizes a random numbers generator with the given seed value
-        Random generator = new Random(seed);  
+        	Random generator = new Random(seed);  
 
 		//// In the previous version of this program, you used a statement like:
 		//// double rnd = Math.random();
@@ -37,13 +38,11 @@ public class OneOfEachStats {
 			// The "while" counts how many children until at least
 			// one of each gender.
 			firstChild = generator.nextDouble() > 0.5 ? 'b' : 'g';
-			while (!isOneOfEach) {
+			// #feedback: bad usage of condition instead of taking advantage the loop condition
+			do {
 				child = generator.nextDouble() > 0.5 ? 'b' : 'g';
-				if (child != firstChild) {
-					isOneOfEach = true;
-				}
 				countChildrenPerRun += 1;
-			}
+			} while (child == firstChild);
 			// Count families
 			if (countChildrenPerRun == 2) twoChilds++;
 			else if (countChildrenPerRun == 3) threeChilds++;

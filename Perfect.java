@@ -3,27 +3,28 @@
  */
 public class Perfect {
 	public static void main (String[] args) {
-		int userInput = Integer.parseInt(args[0]);
+		// #feedback: even though you mostly use very good names, userInput might be confusing especially when it's not a string...
+		int userNumber = Integer.parseInt(args[0]);
 		int sum = 0;
-		boolean isPerfect = false;
+		// #feedback: you did not use this variable - why do we need it?
 		String answer = " = ";
 		String numStr = "";
-		for (int i = 1; i < userInput; i++) {
-			if (userInput % i == 0) {
+		for (int i = 1; i < userNumber; i++) {
+			if (userNumber % i == 0) {
 				sum += i;
 				// Convert the divisor to str and concatinate
-				numStr = Integer.toString(i);
-				answer = (answer + numStr + " + ");
+				// #feedback: you could not do this conversion
+				// #feedback: x += n is equivalent to x = x + n
+				answer += i + " + ";
 			}
 		}
 		// Remove the " +" of the end
 		answer = answer.substring(0, answer.length() - 3);
-		if (sum == userInput) {
-			isPerfect = true;
-			System.out.println(userInput + " is a perfect number since " + userInput +
+		if (sum == userNumber) {
+			System.out.println(userNumber + " is a perfect number since " + userNumber +
 				answer);
 		} else {
-			System.out.println(userInput + " is not a perfect number");
+			System.out.println(userNumber + " is not a perfect number");
 		}
 	}
 }

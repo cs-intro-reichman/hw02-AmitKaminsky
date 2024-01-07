@@ -8,9 +8,8 @@ public class Reverse {
 		for (int i = userInput.length() - 1; i >= 0; i--) {
 			System.out.print(userInput.charAt(i));
 		}
-		boolean isInputEven = userInput.length() % 2 == 0;
-		char mid = isInputEven ? 
-			userInput.charAt((int) ((userInput.length() / 2) - 0.5)) : userInput.charAt(userInput.length() / 2);
+		// #feedback: why do you need seperate even\odd cases? with integers 7/2 = 3 = 6/2 (minus 1 stand for the fact indices starts in 0)
+		char mid = userInput.charAt((userInput.length() - 1) / 2);
 		System.out.println("\nThe middle character is " + mid);
 	}
 }
